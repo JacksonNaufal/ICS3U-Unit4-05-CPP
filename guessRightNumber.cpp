@@ -3,33 +3,40 @@
 // Created On March 2022
 // This is a loop adder
 
-
 #include <iostream>
-
-
 
 int main() {
     // this function is a loop adder
-    std::string integerAsNumber;
-    int number;
-    int total = 1;
-    int loopNumber = 0;
-
+    std::string UserNumber;
+    std::string UserEnter;
+    int userNumberInt;
+    int total = 0;
+    int userInputInteger = 0;
 
     // input
     std::cout << "Enter your number!: ";
-    std::cin >> integerAsNumber;
+    std::cin >> UserNumber;
     std::cout << std::endl;
 
     // process & output
     try {
-        number = std::stoi(integerAsNumber);
-    do  {
-        loopNumber = loopNumber + 1;
-        total = total * loopNumber;
-     } while (loopNumber < number);
-        std::cout << "The sum of all the positive numbers from 1 to "
-        << number << " is " << total << std::endl;
+        userNumberInt = std::stoi(UserNumber);
+        if (userNumberInt < 0) {
+            std::cout << "Invalid Input" << std::endl;
+        } else {
+            for (int integerNumber = 0; integerNumber <
+            userNumberInt; integerNumber++ ) {
+                std::cout <<"Enter an integer: ";
+                std::cin >> UserEnter;
+                std::cout << std::endl;
+                userInputInteger = std::stoi(UserEnter);
+                if (userInputInteger < 0) {
+                    continue;
+                }
+                total = total + userInputInteger;
+                std::cout << "The Overall is " << total << "!" << std::endl;
+            }
+        }
     } catch (std::invalid_argument) {
         std::cout << "Invalid Input.";
     }
